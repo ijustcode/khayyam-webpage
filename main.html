@@ -39,30 +39,34 @@
         <p>Here, the Persian verse finds its place.</p>
     </div>
     <script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-      import { getFirestore, collection, addDoc, query, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyBfkL5WGRmnoaDhBkbK4sB7nhi59GUrQ-M",
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getFirestore, collection, addDoc, query, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBfkL5WGRmnoaDhBkbK4sB7nhi59GUrQ-M",
         authDomain: "khayyam-backend.firebaseapp.com",
         projectId: "khayyam-backend",
         storageBucket: "khayyam-backend.appspot.com",
         messagingSenderId: "87530331229",
         appId: "1:87530331229:web:3f00dc141b1c1a599941b4"
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-
-      document.addEventListener('DOMContentLoaded', function() {
-        fetchComments();
-      });
-
-      async function submitComment() {
-        const commentInput = document.getElementById('comment-input');
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+      
+        document.addEventListener('DOMContentLoaded', function() {
+          fetchComments();
+          const submitButton = document.getElementById('submitCommentButton');
+          if(submitButton) {
+              submitButton.addEventListener('click', submitComment);
+          }
+        });
+      
+        async function submitComment() {
+          const commentInput = document.getElementById('comment-input');
         const commentText = commentInput.value.trim();
         if (commentText === "") {
           alert("Please enter a comment before submitting.");
@@ -82,10 +86,10 @@
         } catch (e) {
           console.error("Error adding document: ", e);
         }
-      }
-
-      async function fetchComments() {
-        const commentsDiv = document.getElementById('comments');
+        }
+      
+        async function fetchComments() {
+          const commentsDiv = document.getElementById('comments');
         commentsDiv.innerHTML = ''; // Clear existing comments before fetching
 
         const q = query(collection(db, "comments"), orderBy("timestamp", "desc"));
@@ -99,22 +103,15 @@
         } catch (e) {
           console.error("Error fetching documents: ", e);
         }
-      }
-    </script>
+        }
+      </script>
+      
     <div class="section" id="comments-section">
         <h2>Comments</h2>
         <div id="comments"></div>
         <input type="text" id="comment-input" placeholder="Leave a comment" />
         <button id="submitCommentButton">Submit</button>
     </div>
-    <script type="module">
-      document.addEventListener('DOMContentLoaded', (event) => {
-          const submitButton = document.getElementById('submitCommentButton');
-          if(submitButton) {
-              submitButton.addEventListener('click', submitComment);
-          }
-      });
-    </script>
 
 </body>
 </html>
