@@ -105,8 +105,16 @@
         <h2>Comments</h2>
         <div id="comments"></div>
         <input type="text" id="comment-input" placeholder="Leave a comment" />
-        <button onclick="submitComment()">Submit</button>
+        <button id="submitCommentButton">Submit</button>
     </div>
+    <script type="module">
+      document.addEventListener('DOMContentLoaded', (event) => {
+          const submitButton = document.getElementById('submitCommentButton');
+          if(submitButton) {
+              submitButton.addEventListener('click', submitComment);
+          }
+      });
+    </script>
 
 </body>
 </html>
