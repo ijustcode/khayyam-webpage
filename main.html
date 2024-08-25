@@ -48,80 +48,8 @@
         <h2>Poetic Transliteration of Lyrics to English</h2>
         <p>The poetic translation to English goes here</p>
     </div>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, query, orderBy, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
       
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyBfkL5WGRmnoaDhBkbK4sB7nhi59GUrQ-M",
-            authDomain: "khayyam-backend.firebaseapp.com",
-            projectId: "khayyam-backend",
-            storageBucket: "khayyam-backend.appspot.com",
-            messagingSenderId: "87530331229",
-            appId: "1:87530331229:web:3f00dc141b1c1a599941b4"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-      
-        document.addEventListener('DOMContentLoaded', function() {
-          fetchComments();
-          const submitButton = document.getElementById('submitCommentButton');
-          if(submitButton) {
-              submitButton.addEventListener('click', submitComment);
-          }
-        });
-      
-        async function submitComment() {
-          const commentInput = document.getElementById('comment-input');
-          const commentText = commentInput.value.trim();
-          if (commentText === "") {
-            alert("Please enter a comment before submitting.");
-            return;
-          }
-          const username = "User" + Math.floor(Math.random() * 1000); // Generate a random username
-
-          try {
-            await addDoc(collection(db, "comments"), {
-              username: username,
-              comment: commentText,
-              timestamp: serverTimestamp()
-            });
-            console.log("Document successfully written!");
-            commentInput.value = ''; // Clear the input field after submission
-            fetchComments(); // Refresh the comments section to include the new comment
-          } catch (e) {
-            console.error("Error adding document: ", e);
-          }
-        }
-      
-        async function fetchComments() {
-          const commentsDiv = document.getElementById('comments');
-        commentsDiv.innerHTML = ''; // Clear existing comments before fetching
-
-        const q = query(collection(db, "comments"), orderBy("timestamp", "desc"));
-
-        try {
-          const querySnapshot = await getDocs(q);
-          querySnapshot.forEach((doc) => {
-            const comment = doc.data();
-            commentsDiv.innerHTML += `<p><strong>${comment.username}:</strong> ${comment.comment}</p>`;
-          });
-        } catch (e) {
-          console.error("Error fetching documents: ", e);
-        }
-        }
-      </script>
-      
-    <div class="section" id="comments-section">
-        <h2>Comments</h2>
-        <input type="text" id="comment-input" placeholder="Leave a comment" />
-        <button id="submitCommentButton">Submit</button>
-        <div id="comments"></div>
-    </div>
+    <!-- Removed the entire comments section -->
 
 </body>
 </html>
