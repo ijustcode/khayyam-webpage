@@ -88,7 +88,66 @@
           </p>
     </div>
       
-    <!-- Removed the entire comments section -->
+    <div class="section">
+        <h2>Comments</h2>
+        <div id="commentSection">
+            <button id="loginButton" style="display: none;">Login with Google</button>
+            <div id="userInfo" style="display: none;">
+                <p>Logged in as: <span id="userName"></span></p>
+                <button id="logoutButton">Logout</button>
+            </div>
+            <button id="addCommentButton" style="display: none;">Add a Comment</button>
+            <div id="commentBox" style="display: none;">
+                <textarea id="commentText" rows="4" cols="50"></textarea>
+                <button id="submitComment">OK</button>
+            </div>
+            <div id="comments"></div>
+        </div>
+    </div>
 
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        // Simulating Google authentication (replace with actual Google OAuth implementation)
+        let isAuthenticated = false;
+        let userName = '';
+
+        function updateUI() {
+            document.getElementById('loginButton').style.display = isAuthenticated ? 'none' : 'block';
+            document.getElementById('userInfo').style.display = isAuthenticated ? 'block' : 'none';
+            document.getElementById('addCommentButton').style.display = isAuthenticated ? 'block' : 'none';
+            document.getElementById('userName').textContent = userName;
+        }
+
+        document.getElementById('loginButton').addEventListener('click', function() {
+            // Simulate Google login
+            isAuthenticated = true;
+            userName = 'John Doe'; // This would be the actual user name from Google
+            updateUI();
+        });
+
+        document.getElementById('logoutButton').addEventListener('click', function() {
+            isAuthenticated = false;
+            userName = '';
+            updateUI();
+            document.getElementById('commentBox').style.display = 'none';
+        });
+
+        document.getElementById('addCommentButton').addEventListener('click', function() {
+            document.getElementById('commentBox').style.display = 'block';
+        });
+
+        document.getElementById('submitComment').addEventListener('click', function() {
+            const commentText = document.getElementById('commentText').value;
+            if (commentText.trim() !== '') {
+                console.log('Comment submitted:', commentText);
+                // Here you would typically send the comment to a server
+                document.getElementById('commentText').value = '';
+                document.getElementById('commentBox').style.display = 'none';
+            }
+        });
+
+        // Initial UI update
+        updateUI();
+    </script>
 </body>
 </html>
