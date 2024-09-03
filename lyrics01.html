@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>من ظاهرِ نیستی و هستی دانم</title>
+    <title>Loading...</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -42,55 +42,34 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="firebase-auth.js" defer></script>
+    <script src="poem-loader.js" defer></script>
 </head>
 <body>
-    <h1 dir="rtl">من ظاهرِ نیستی و هستی دانم</h1>
+    <h1 id="poem-title" dir="rtl"></h1>
     <div class="section" dir="rtl" style="font-size: 1.5em;">
-        <p>من ظاهرِ نیستی و هستی دانم،<br>
-          من باطنِ هر فراز و پستی دانم؛<br>
-          با این‌همه از دانشِ خود شَرْمَم باد،<br>
-          گر مرتبه‌ای وَرایِ مستی دانم</p>
-        <!-- <img class="centered-image" src="images/Nastaliq.jpeg" alt="Descriptive text about the image" width="1000" height="400"> -->
+        <p id="poem-in-farsi"></p>
     </div>
 
     <div class="section">
         <h2>Transliteration of Lyrics to English</h2>
-        <p>Man zāher-e nisti o hasti dānam,<br>
-          Man bāten-e har farāz o pasti dānam;<br>
-          Ba in hame az dānesh-e khod sharmam bād,<br>
-          Gar martabeh-ee varāye masti dānam.
-          </p>
+        <p id="transliteration"></p>
     </div>
 
     <div class="section">
       <h2>Literal translation of Lyrics to English</h2>
-      <p>I have a superficial awareness of both absence and presence,<br>
-        But I deeply comprehend every high and low.<br>
-        Yet, despite this understanding, I feel ashamed of my wisdom,<br>
-        If I perceive any state beyond drunkenness.        
-        </p>
+      <p id="literal-translation"></p>
     </div>
     <div class="section">
       <h2>Meaning</h2>
-      <p>1. I understand the basic concept of existence and non-existence.<br>
-        2. I grasp the deeper meaning of life’s ups and downs.<br>
-        3. Despite all my knowledge, I am humbled and ashamed by it.<br>
-        4. If I think there is a higher truth beyond drunkenness, which refers to an experience
-        where one lives in the moment, fully enjoys it, and does not worry about the past or
-        future.</p>
+      <p id="meaning"></p>
     </div>
     <div class="section">
       <h2>Implications for 21st-century life</h2>
-      <p>The poem implies that despite our vast knowledge and understanding of the world, true wisdom may lie in embracing the present moment. It suggests that rather than constantly seeking deeper truths or getting caught up in the complexities of existence, we might find fulfillment in living fully in the now, free from anxieties about the past or future. This resonates with the modern emphasis on mindfulness and the search for meaning beyond material success or intellectual achievement.
-      </p>
+      <p id="implications"></p>
     </div>
     <div class="section">
         <h2>Poetic Transliteration of lyrics to English</h2>
-        <p>I know the seen and unseen, existence I embrace,<br>
-          I comprehend the inner depths and the surface's grace;<br>
-          Yet, my knowledge brings shame and a modest quest,<br>
-          Yearning for insights beyond, an intoxicated space.
-          </p>
+        <p id="poetic-translation"></p>
     </div>
       
     <div class="section">
@@ -110,6 +89,9 @@
         </div>
     </div>
 
-    <!-- Remove the inline script with Firebase config -->
+    <script>
+        // Load the poem with ID 0 (first poem in the CSV)
+        loadPoem(0);
+    </script>
 </body>
 </html>

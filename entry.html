@@ -40,6 +40,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <script src="firebase-auth.js" defer></script>
+    <script src="poem-loader.js" defer></script>
 </head>
 <body>
     <div class="main-container">
@@ -50,20 +51,34 @@
     <div class="main-container">
         <div style="display: flex; justify-content: space-between;">
             <div style="width: 48%;">
-                <ul dir="ltr">
-                    <li><a href="lyrics01.html" style="font-size: 1.2em; display: inline-block; width: 100%;">I have a superficial awareness of both absence and presence</a></li>
-                    <li><a href="lyrics02.html" style="font-size: 1.2em; display: inline-block; width: 100%;">Today, access to tomorrow is denied</a></li>
-                    <!-- Add more links to other inner pages here -->
+                <ul id="poem-list-en" dir="ltr">
+                    <!-- Will be populated dynamically -->
                 </ul>
             </div>
             <div style="width: 48%;">
-                <ul dir="rtl">
-                    <li><a href="lyrics01.html" style="font-size: 1.2em; display: inline-block; width: 100%;">من ظاهرِ نیستی و هستی دانم</a></li>
-                    <li><a href="lyrics02.html" style="font-size: 1.2em; display: inline-block; width: 100%;">امروز تو را دسترس فردا نیست</a></li>
-                    <!-- Add more links to other inner pages here -->
+                <ul id="poem-list-fa" dir="rtl">
+                    <!-- Will be populated dynamically -->
                 </ul>
             </div>
         </div>
     </div>
+
+    <script>
+        async function loadPoemList() {
+            const response = await fetch('poems.csv');
+            const csvText = await response.text();
+            const poems = parseCSV(csvText);
+            
+            const listEn = document.getElementById('poem-list-en');
+            const listFa = document.getElementById('poem-list-fa');
+
+            poems.forEach((poem, index) => {
+                listEn.innerHTML += `<li><a href="lyrics01.html?id=${index}" style="font-size: 1.2em; display: inline-block; width: 100%;">${poem.title_in_english}</a></li>`;
+                listFa.innerHTML += `<li><a href="lyrics01.html?id=${index}" style="font-size: 1.2em; display: inline-block; width: 100%;">${poem.title_in_farsi}</a></li>`;
+            });
+        }
+
+        loadPoemList();
+    </script>
 </body>
 </html>
