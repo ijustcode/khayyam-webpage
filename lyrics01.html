@@ -37,6 +37,11 @@
             margin-right: auto;
         }
     </style>
+    
+    <!-- Add these scripts in the head section -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="firebase-auth.js" defer></script>
 </head>
 <body>
     <h1 dir="rtl">من ظاهرِ نیستی و هستی دانم</h1>
@@ -91,7 +96,7 @@
     <div class="section">
         <h2>Comments</h2>
         <div id="commentSection">
-            <button id="loginButton" style="display: none;">Login with Google</button>
+            <button id="loginButton">Login with Google</button>
             <div id="userInfo" style="display: none;">
                 <p>Logged in as: <span id="userName"></span></p>
                 <button id="logoutButton">Logout</button>
@@ -105,49 +110,6 @@
         </div>
     </div>
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script>
-        // Simulating Google authentication (replace with actual Google OAuth implementation)
-        let isAuthenticated = false;
-        let userName = '';
-
-        function updateUI() {
-            document.getElementById('loginButton').style.display = isAuthenticated ? 'none' : 'block';
-            document.getElementById('userInfo').style.display = isAuthenticated ? 'block' : 'none';
-            document.getElementById('addCommentButton').style.display = isAuthenticated ? 'block' : 'none';
-            document.getElementById('userName').textContent = userName;
-        }
-
-        document.getElementById('loginButton').addEventListener('click', function() {
-            // Simulate Google login
-            isAuthenticated = true;
-            userName = 'John Doe'; // This would be the actual user name from Google
-            updateUI();
-        });
-
-        document.getElementById('logoutButton').addEventListener('click', function() {
-            isAuthenticated = false;
-            userName = '';
-            updateUI();
-            document.getElementById('commentBox').style.display = 'none';
-        });
-
-        document.getElementById('addCommentButton').addEventListener('click', function() {
-            document.getElementById('commentBox').style.display = 'block';
-        });
-
-        document.getElementById('submitComment').addEventListener('click', function() {
-            const commentText = document.getElementById('commentText').value;
-            if (commentText.trim() !== '') {
-                console.log('Comment submitted:', commentText);
-                // Here you would typically send the comment to a server
-                document.getElementById('commentText').value = '';
-                document.getElementById('commentBox').style.display = 'none';
-            }
-        });
-
-        // Initial UI update
-        updateUI();
-    </script>
+    <!-- Remove the inline script with Firebase config -->
 </body>
 </html>
