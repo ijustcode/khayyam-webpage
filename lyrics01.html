@@ -41,10 +41,11 @@
     <!-- Add these scripts in the head section -->
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
-    <script src="firebase-auth.js" defer></script>
-    <script src="poem-loader.js" defer></script>
+    <script src="firebase-auth.js"></script>
+    <script src="poem-loader.js"></script>
 </head>
 <body>
+    <h1>Test Content</h1>
     <h1 id="poem-title" dir="rtl"></h1>
     <div class="section" dir="rtl" style="font-size: 1.5em;">
         <p id="poem-in-farsi"></p>
@@ -90,8 +91,16 @@
     </div>
 
     <script>
-        // Load the poem with ID 0 (first poem in the CSV)
-        loadPoem(0);
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+            if (typeof loadPoem === 'function') {
+                console.log('loadPoem function found, calling with id 0');
+                loadPoem(0);
+            } else {
+                console.error('loadPoem function is not defined');
+                alert('Error: Could not load poem. Please check the console for more information.');
+            }
+        });
     </script>
 </body>
 </html>

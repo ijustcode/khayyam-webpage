@@ -3,23 +3,29 @@ function getPoemIdFromUrl() {
     return parseInt(urlParams.get('id')) || 0;
 }
 
-async function loadPoem() {
-    const poemId = getPoemIdFromUrl();
-    const response = await fetch('poems.csv');
-    const csvText = await response.text();
-    const poems = parseCSV(csvText);
-    const poem = poems[poemId];
-
-    if (poem) {
-        document.title = poem.title_in_farsi;
-        document.getElementById('poem-title').textContent = poem.title_in_farsi;
-        document.getElementById('poem-in-farsi').innerHTML = poem.poem_in_farsi.replace(/\n/g, '<br>');
-        document.getElementById('transliteration').innerHTML = poem.poem_in_english.replace(/\n/g, '<br>');
-        document.getElementById('literal-translation').innerHTML = poem.poem_in_english_translation.replace(/\n/g, '<br>');
-        document.getElementById('meaning').innerHTML = poem.meaning.replace(/\n/g, '<br>');
-        document.getElementById('implications').textContent = poem.implications_for_21st_century;
-        document.getElementById('poetic-translation').innerHTML = poem.poetic_translation.replace(/\n/g, '<br>');
-    }
+function loadPoem(id) {
+    console.log('Loading poem with id:', id);
+    
+    // Fetch the CSV file
+    fetch('poems.csv')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(csvText => {
+            if (!csvText) {
+                throw new Error('CSV text is empty');
+            }
+            console.log('CSV text loaded:', csvText.substring(0, 100) + '...'); // Log first 100 characters
+            const poems = parseCSV(csvText);
+            // Rest of your code to display the poem
+        })
+        .catch(error => {
+            console.error('Error loading poem:', error);
+            alert('Error: Could not load poem. Please check the console for more information.');
+        });
 }
 
 function parseCSV(csvText) {
