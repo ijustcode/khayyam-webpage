@@ -1,0 +1,357 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazirmatn', 'Arial', sans-serif;
+    background-color: #1a1410;
+    color: #e8dcc8;
+    line-height: 1.8;
+    direction: rtl;
+}
+
+a {
+    color: #e8dcc8;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #c49a6c;
+}
+
+/* ── Header ── */
+.site-header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    border-bottom: 2px solid #c49a6c;
+    margin-bottom: 30px;
+}
+
+.site-header h1 {
+    font-size: 2.4em;
+    font-weight: 700;
+    color: #c49a6c;
+    margin-bottom: 5px;
+}
+
+.site-header .subtitle {
+    font-size: 1.1em;
+    color: #a08060;
+}
+
+/* ── Container ── */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+/* ── Landing page poem list ── */
+.poem-list {
+    list-style: none;
+    padding: 0;
+}
+
+.poem-list li {
+    padding: 12px 15px;
+    border-bottom: 1px solid #2a2018;
+    font-size: 1.1em;
+}
+
+.poem-list li:hover {
+    background-color: #2a2018;
+}
+
+.poem-list li a {
+    display: block;
+    width: 100%;
+}
+
+.poem-number {
+    color: #c49a6c;
+    font-weight: 500;
+}
+
+/* ── Poem detail page ── */
+.breadcrumb {
+    text-align: center;
+    padding: 15px;
+    color: #a08060;
+    font-size: 0.95em;
+}
+
+.breadcrumb a {
+    color: #c49a6c;
+}
+
+.poem-card {
+    background-color: #f5efe6;
+    color: #2a1f14;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 40px 50px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.poem-card h2 {
+    text-align: center;
+    color: #5a3a1a;
+    font-size: 1.5em;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #c49a6c;
+}
+
+.poem-section {
+    margin-bottom: 35px;
+}
+
+.poem-section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+    background-color: #c49a6c;
+    padding: 6px 20px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.poem-section .farsi-text {
+    font-size: 1.4em;
+    line-height: 2.2;
+    text-align: center;
+    direction: rtl;
+    color: #2a1f14;
+}
+
+.poem-section .english-text {
+    font-size: 1.05em;
+    line-height: 2;
+    text-align: center;
+    direction: ltr;
+    color: #3a2a1a;
+}
+
+.poem-section .poetic-text {
+    font-size: 1.1em;
+    line-height: 2;
+    text-align: center;
+    direction: ltr;
+    font-style: italic;
+    color: #3a2a1a;
+}
+
+/* ── Navigation arrows ── */
+.poem-nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+    direction: ltr;
+}
+
+.poem-nav a {
+    color: #c49a6c;
+    font-size: 1.1em;
+    padding: 8px 16px;
+    border: 1px solid #c49a6c;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.poem-nav a:hover {
+    background-color: #c49a6c;
+    color: #1a1410;
+}
+
+.poem-nav a.disabled {
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* ── Comment section ── */
+.comment-section {
+    max-width: 800px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+}
+
+.comment-section h3 {
+    color: #c49a6c;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a2018;
+}
+
+.auth-area {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-login {
+    background-color: #c49a6c;
+    color: #1a1410;
+    font-weight: 500;
+}
+
+.btn-login:hover {
+    background-color: #d4aa7c;
+}
+
+.btn-logout {
+    background-color: #3a2a1a;
+    color: #e8dcc8;
+    font-size: 0.85em;
+    padding: 6px 16px;
+}
+
+.btn-logout:hover {
+    background-color: #4a3a2a;
+}
+
+.btn-submit {
+    background-color: #c49a6c;
+    color: #1a1410;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background-color: #d4aa7c;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.user-info img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.user-info span {
+    color: #e8dcc8;
+}
+
+.comment-form {
+    margin-bottom: 30px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #3a2a1a;
+    border-radius: 4px;
+    background-color: #2a2018;
+    color: #e8dcc8;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 0.95em;
+    resize: vertical;
+    min-height: 80px;
+    direction: rtl;
+}
+
+.comment-form textarea:focus {
+    outline: none;
+    border-color: #c49a6c;
+}
+
+.comment-item {
+    padding: 15px 0;
+    border-bottom: 1px solid #2a2018;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.comment-header img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+}
+
+.comment-author {
+    color: #c49a6c;
+    font-weight: 500;
+    font-size: 0.9em;
+}
+
+.comment-date {
+    color: #706050;
+    font-size: 0.8em;
+    margin-right: auto;
+    direction: ltr;
+}
+
+.comment-body {
+    color: #d0c4b0;
+    font-size: 0.95em;
+    line-height: 1.7;
+    padding-right: 38px;
+}
+
+.no-comments {
+    text-align: center;
+    color: #706050;
+    padding: 20px;
+    font-size: 0.95em;
+}
+
+.login-prompt {
+    text-align: center;
+    color: #a08060;
+    margin-bottom: 20px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+    .site-header h1 {
+        font-size: 1.8em;
+    }
+
+    .poem-card {
+        padding: 25px 20px;
+    }
+
+    .poem-section .farsi-text {
+        font-size: 1.2em;
+    }
+
+    .comment-body {
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رباعیات خیام</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <h1><a href="index.html" style="color: #c49a6c;">رباعیات خیام</a></h1>
+    </header>
+
+    <div class="breadcrumb" id="breadcrumb"></div>
+
+    <div class="poem-card">
+        <h2 id="poem-title"></h2>
+
+        <div class="poem-section">
+            <div class="section-title">متن فارسی</div>
+            <div class="farsi-text" id="poem-in-farsi"></div>
+        </div>
+
+        <div class="poem-section">
+            <div class="section-title">English Translation</div>
+            <div class="english-text" id="literal-translation"></div>
+        </div>
+
+        <div class="poem-section">
+            <div class="section-title">Transliteration</div>
+            <div class="english-text" id="transliteration"></div>
+        </div>
+
+        <div class="poem-section">
+            <div class="section-title">Poetic Translation</div>
+            <div class="poetic-text" id="poetic-translation"></div>
+        </div>
+    </div>
+
+    <div class="poem-nav">
+        <a href="#" id="prev-poem">&larr; Previous</a>
+        <a href="#" id="next-poem">Next &rarr;</a>
+    </div>
+
+    <div class="comment-section">
+        <h3>نظرات / Comments</h3>
+
+        <div class="auth-area" id="auth-area">
+            <button class="btn btn-login" id="loginBtn" onclick="signIn()">ورود با گوگل / Sign in with Google</button>
+        </div>
+
+        <div class="user-info" id="user-info" style="display:none;">
+            <img id="user-avatar" src="" alt="">
+            <span id="user-name"></span>
+            <button class="btn btn-logout" onclick="signOut()">خروج</button>
+        </div>
+
+        <div class="comment-form" id="comment-form" style="display:none;">
+            <textarea id="comment-text" placeholder="نظر خود را بنویسید..."></textarea>
+            <button class="btn btn-submit" onclick="submitComment()">ارسال</button>
+        </div>
+
+        <div id="comments-list">
+            <p class="no-comments">در حال بارگذاری...</p>
+        </div>
+    </div>
+
+    <script src="poem-loader.js"></script>
+    <script>
+        loadPoem();
+    </script>
+    <script src="firebase-config.js"></script>
+    <script src="comments.js"></script>
+</body>
+</html>
